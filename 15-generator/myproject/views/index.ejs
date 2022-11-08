@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mongodb</title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+
+
+  
+  </head>
+  <body>
+    <h1>mongodb</h1>
+    
+
+    <div>username:<input class="username"/></div>
+
+    <div>pwd:<input type="password" class="pwd"/></div>
+    
+    <div>age:<input type="number" class="age"/></div>
+
+    <div><button class="signup">sign up</button></div>
+
+    <button>更新</button>
+    <button>删除</button>
+
+
+
+
+
+
+    <script>
+
+
+      let signup = document.querySelector('.signup')
+      let username = document.querySelector(".username")
+      let pwd = document.querySelector(".pwd")
+      let age = document.querySelector(".age")
+
+      
+
+
+      signup.onclick = function(){
+        // console.log(123)
+        console.log(username.value,pwd.value,age.value)
+
+
+        fetch("/api/user/add",{
+          method:"POST",
+          body:JSON.stringify({
+              username:username.value,
+              pwd:pwd.value,
+              age:age.value
+          }),
+          headers:{
+            "Content-Type":"application/json"
+          }
+        }).then(res=>res.json()).then(res=>{
+          console.log(res)
+        })
+
+
+
+      }      
+
+
+
+
+   
+
+
+    </script>
+
+
+  </body>
+</html>
