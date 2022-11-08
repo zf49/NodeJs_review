@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const usertype = {
     username:String,
-    passpwdword:String,
+    pwd:String,
     age:Number
 }
 

@@ -8,7 +8,7 @@
   
   </head>
   <body>
-    <h1>mongodb</h1>
+    <h1>后台管理</h1>
     
 
     <div>username:<input class="username"/></div>
@@ -19,15 +19,75 @@
 
     <div><button class="signup">sign up</button></div>
 
-    <button>更新</button>
-    <button>删除</button>
+    <button class="update">更新</button>
+    <button class="delete">删除</button>
 
+    <button class="get">get</button>
 
 
 
 
 
     <script>
+
+
+
+
+
+let get = document.querySelector('.get');
+
+get.onclick = ()=>{
+  fetch("/api/user/list").then(res=>res.json()).then(res=>{
+        console.log(res)
+      })
+}
+
+
+
+      let update = document.querySelector('.update');
+
+      let delet = document.querySelector('.delete');
+
+      delet.onclick = function(){
+      
+
+
+      fetch("/api/user/delete/6369c6db1ecb57dc562d99fe",{
+        method:"GET"
+      }).then(res=>res.json()).then(res=>{
+        console.log(res)
+      })
+    } 
+
+
+
+
+
+      update.onclick = function(){
+      
+
+
+        fetch("/api/user/add/6369c6db1ecb57dc562d99fe",{
+          method:"POST",
+          body:JSON.stringify({
+              username:"修改的名字",
+              pwd:"修改的密码",
+              age:1
+          }),
+          headers:{
+            "Content-Type":"application/json"
+          }
+        }).then(res=>res.json()).then(res=>{
+          console.log(res)
+        })
+      } 
+
+
+
+
+
+
+
 
 
       let signup = document.querySelector('.signup')
@@ -56,9 +116,6 @@
         }).then(res=>res.json()).then(res=>{
           console.log(res)
         })
-
-
-
       }      
 
 

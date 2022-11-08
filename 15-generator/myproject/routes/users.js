@@ -42,4 +42,60 @@ router.post('/user/add',(req,res)=>{
 })
 
 
+
+
+// 获取id
+router.post("/user/add/:id",(req,res)=>{
+    console.log(req.body,req.params.id)
+
+    const {username,pwd,age} = req.body
+
+
+
+    userModel.updateOne({_id:req.params.id},{username,pwd,age}).then(data=>{
+
+      res.send({ok:1})
+
+    })
+
+
+
+
+
+
+})
+
+
+
+
+router.get("/user/delete/:id",(req,res)=>{
+
+    userModel.deleteOne({_id:req.params.id}).then((data)=>{
+        res.send({ok:1})
+    })
+
+
+})
+
+
+
+
+router.get('/user/list',(req,res)=>{
+
+// console.log(req.path)
+  userModel.find({},["username","age"]).sort({age:-1}).then((data)=>{
+    console.log(data)
+
+    res.send(data)
+
+  })
+
+
+})
+
+
+
+
+
+
 module.exports = router;
