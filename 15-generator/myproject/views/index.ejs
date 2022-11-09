@@ -8,7 +8,7 @@
   
   </head>
   <body>
-    <h1>后台管理</h1>
+    <h1>用户管理</h1>
     
 
     <div>username:<input class="username"/></div>
@@ -17,7 +17,7 @@
     
     <div>age:<input type="number" class="age"/></div>
 
-    <div><button class="signup">sign up</button></div>
+    <div><button class="signup">添加用户</button></div>
 
     <button class="update">更新</button>
     <button class="delete">删除</button>
@@ -56,6 +56,11 @@ get.onclick = ()=>{
         method:"GET"
       }).then(res=>res.json()).then(res=>{
         console.log(res)
+
+        if(res.ok===1){
+            location.href=('/login')
+        }
+
       })
     } 
 
@@ -79,6 +84,9 @@ get.onclick = ()=>{
           }
         }).then(res=>res.json()).then(res=>{
           console.log(res)
+          if(res.ok===1){
+            location.href=('/login')
+        }
         })
       } 
 
@@ -115,6 +123,9 @@ get.onclick = ()=>{
           }
         }).then(res=>res.json()).then(res=>{
           console.log(res)
+          if(res.ok===1){
+            location.href=('/login')
+        }
         })
       }      
 

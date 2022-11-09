@@ -10,6 +10,38 @@ router.get('/', function(req, res, next) {
 
 
 
+router.post('/login',async function(req,res){
+  console.log(req.body)
+
+  const {username,pwd} = req.body
+
+ const data =  await userModel.find({username,pwd})
+
+  console.log(data)
+
+  if(data.length >= 1 ){
+      // 设置session对象
+      req.session.user=data[0]
+      console.log(123)
+      res.send({
+        ok:1
+      })
+     
+  }else{
+      
+      res.send({
+          failed:1
+      })
+  }
+
+
+})
+
+
+
+
+
+
 router.post('/user/add',(req,res)=>{
     console.log(req.body)
     // 插入数据库，

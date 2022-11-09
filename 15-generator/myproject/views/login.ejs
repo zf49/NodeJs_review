@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>登陆</h1>
+
+    <div>
+        <div>username:<input class="username" type="text"/></div>
+        <div>pwd:<input class="pwd" type="password"/></div>
+        <div><button class="login">登陆</button></div>
+
+    </div>
+
+
+    <script>
+
+
+
+
+
+        let username = document.querySelector('.username');
+        let pwd = document.querySelector('.pwd');
+        
+        let login = document.querySelector('.login');
+        
+
+        login.onclick = ()=>{
+
+        
+            fetch('/api/login',{
+                method:"POST",
+
+                body:JSON.stringify({
+                    username:username.value,
+                    pwd:pwd.value
+                }),
+
+                headers:{
+                    "Content-Type":"application/json"
+                }
+                
+                
+            }).then(res=>res.json()).then(res=>{
+                
+                
+                if(res.failed===1){
+                    alert('wrong pwd')
+                }else{
+                    location.href = ("http://localhost:3000/")
+                }
+            
+            })
+
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
