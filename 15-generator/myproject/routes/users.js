@@ -6,6 +6,18 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/logout', function(req, res, next) {
+
+  req.session.destroy(()=>{
+    res.send({
+      ok:0
+    })
+  })
+
+
+
+});
+
 
 
 

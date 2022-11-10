@@ -23,6 +23,7 @@
     <button class="delete">删除</button>
 
     <button class="get">get</button>
+    <button class="logout">log out</button>
 
 
 
@@ -30,7 +31,19 @@
 
     <script>
 
+let logout = document.querySelector('.logout');
 
+
+logout.onclick = ()=>{
+  fetch("/api/logout").then(res=>res.json()).then(res=>{
+    if(res.ok===0){
+            location.href=('/login')
+        }
+  })
+
+
+
+}
 
 
 

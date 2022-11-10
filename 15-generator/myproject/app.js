@@ -15,9 +15,6 @@ var app = express();
 
 
 
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -54,6 +51,10 @@ app.use((req,res,next)=>{
     }
 
     if(req.session.user){
+
+      //  重新设置
+      req.session.date = Date.now()
+
         next()
     }else{
         //  接口，返回错误码
